@@ -1,64 +1,66 @@
-:root { --bup-green: #004d40; --pdf-green: #2e7d32; }
+:root { 
+    --bup-green: #004d40; 
+    --pdf-green: #2e7d32; 
+    --header-h: 60px;
+    --footer-h: 40px;
+}
 
 * { box-sizing: border-box; }
-body { margin: 0; font-family: 'Segoe UI', Arial, sans-serif; display: flex; flex-direction: column; background: #f0f2f5; }
+body { 
+    margin: 0; 
+    font-family: 'Segoe UI', sans-serif; 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+    background: #f4f4f4;
+}
 
-/* Header */
-.main-header { background: var(--bup-green); color: white; text-align: center; padding: 15px; position: sticky; top: 0; z-index: 100; }
+/* Fixed Header & Footer */
+.main-header { height: var(--header-h); background: var(--bup-green); color: white; display: flex; align-items: center; justify-content: center; z-index: 10; }
+.bottom-bar { height: var(--footer-h); background: var(--bup-green); color: white; text-align: center; line-height: 40px; font-size: 14px; }
 
-/* Layout */
-.main-wrapper { display: flex; flex-direction: row; flex-wrap: wrap; }
+/* Main Wrapper */
+.main-wrapper { display: flex; flex: 1; overflow: hidden; }
 
-/* Sidebar - Mobile Responsive */
-.sidebar { width: 350px; background: var(--bup-green); color: white; padding: 20px; box-shadow: 2px 0 5px rgba(0,0,0,0.1); }
-@media (max-width: 768px) { .sidebar { width: 100%; } }
+/* Sidebar Responsive */
+.sidebar { width: 320px; background: var(--bup-green); color: white; padding: 20px; overflow-y: auto; }
+.form-group { margin-bottom: 10px; }
+label { font-size: 12px; color: #ddd; }
+input, select { width: 100%; padding: 10px; margin: 5px 0; border-radius: 4px; border: none; font-size: 14px; }
+.btn-download { width: 100%; padding: 12px; background: #ffc107; border: none; font-weight: bold; cursor: pointer; border-radius: 4px; margin-top: 15px; }
 
-.form-group { margin-bottom: 12px; }
-label { font-size: 13px; color: #ccc; }
-input, select { width: 100%; padding: 10px; border-radius: 5px; border: none; margin-top: 5px; }
+/* Preview Section */
+.preview-area { flex: 1; background: #ccc; padding: 20px; overflow: auto; display: flex; justify-content: center; }
 
-.btn-download { width: 100%; padding: 12px; background: #ffc107; color: #000; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; margin-top: 20px; font-size: 16px; }
-
-/* Preview Area */
-.preview-area { flex: 1; display: flex; justify-content: center; padding: 20px; overflow-x: auto; background: #ddd; }
-
-/* PDF Container - A4 Ratio */
+/* Strict A4 PDF Container */
 .pdf-container { 
     width: 210mm; 
-    min-height: 297mm; 
+    height: 297mm; /* ২য় পেজে যাওয়া রোধ করতে */
     background: white; 
-    padding: 20mm; 
+    padding: 15mm 20mm; 
     display: flex; 
     flex-direction: column; 
     text-align: center;
-    position: relative;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    overflow: hidden;
 }
 
-/* PDF Content Styles */
-.univ-name { color: var(--pdf-green); font-size: 26pt; margin: 0; font-weight: bold; }
-.pdf-logo { width: 130px; margin: 30px auto; display: block; }
-.bold-text { font-size: 16pt; font-weight: bold; margin: 5px 0; color: #333; }
+.univ-name { color: var(--pdf-green); font-size: 24pt; margin: 0; font-weight: bold; }
+.pdf-logo { width: 110px; margin: 20px auto; }
+.pdf-bold { font-size: 16pt; font-weight: bold; margin: 5px 0; }
+.assignment-title { font-size: 40pt; color: #3498db; margin: 40px 0; text-decoration: underline; text-underline-offset: 10px; }
 
-.assignment-banner { 
-    font-size: 48pt; 
-    color: #3498db; 
-    margin: 60px 0; 
-    border-bottom: 3px solid #3498db; 
-    display: inline-block;
-    padding-bottom: 10px;
+.pdf-info-grid { display: flex; justify-content: space-between; text-align: left; margin-top: auto; padding-bottom: 40px; }
+.info-col { width: 45%; }
+.info-header { border-bottom: 2px solid #000; font-size: 18pt; margin-bottom: 15px; display: inline-block; }
+.info-col p { font-size: 14pt; margin: 8px 0; }
+
+.pdf-footer { font-size: 16pt; font-weight: bold; border-top: 1px solid #eee; padding-top: 15px; }
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .main-wrapper { flex-direction: column; overflow: visible; }
+    .sidebar { width: 100%; height: auto; }
+    .preview-area { padding: 10px; }
+    .pdf-container { transform: scale(0.4); transform-origin: top center; height: auto; width: 100%; }
 }
-
-.course-section { font-size: 18pt; line-height: 2; margin-bottom: 60px; }
-
-.pdf-info-grid { display: flex; justify-content: space-between; text-align: left; margin-top: auto; padding: 0 10px; }
-.info-column { width: 45%; }
-.info-title { font-size: 18pt; border-bottom: 2px solid #000; display: inline-block; margin-bottom: 15px; }
-.info-column p { margin: 8px 0; font-size: 14pt; line-height: 1.4; }
-
-.pdf-footer { margin-top: 80px; font-size: 16pt; font-weight: bold; padding-bottom: 20px; }
-
-/* Hide preview from actual web footer if needed */
-.bottom-bar { background: var(--bup-green); color: white; text-align: center; padding: 10px; }
-
-@media print { .no-print { display: none; } }
