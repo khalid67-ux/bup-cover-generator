@@ -25,13 +25,11 @@ async function generatePDF() {
     btn.innerText = "Processing...";
     btn.disabled = true;
 
-    // Data Mapping
     document.getElementById('pFaculty').innerText = document.getElementById('faculty').value;
     document.getElementById('pDept').innerText = "Department of " + document.getElementById('dept').value;
     document.getElementById('pTitle').innerText = document.getElementById('courseTitle').value;
     document.getElementById('pCode').innerText = document.getElementById('courseCode').value;
     
-    // Topic logic
     const topicValue = document.getElementById('topic').value;
     const pTopicRow = document.getElementById('pTopicRow');
     if(topicValue) {
@@ -53,19 +51,11 @@ async function generatePDF() {
     document.getElementById('pDate').innerText = rawDate ? new Date(rawDate).toLocaleDateString('en-GB') : "";
 
     const element = document.getElementById('pdf-template');
-    
     const opt = {
         margin: 0,
-        filename: `BUP_Cover_${nameInput.replace(/\s/g, '_')}.pdf`,
+        filename: `BUP_Cover_${nameInput.replace(/\s+/g, '_')}.pdf`,
         image: { type: 'jpeg', quality: 1.0 },
-        html2canvas: { 
-            scale: 3, 
-            useCORS: true,
-            scrollY: 0,
-            scrollX: 0,
-            x: 0,
-            windowWidth: 794 
-        },
+        html2canvas: { scale: 3, useCORS: true, scrollY: 0, scrollX: 0, x: 0, windowWidth: 794 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
