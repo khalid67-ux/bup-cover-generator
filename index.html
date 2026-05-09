@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUP Assignment Cover Page Generator</title>
+    <title>BUP Assignment Cover Generator</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
@@ -13,31 +13,26 @@
         <div class="form-container">
             <header class="form-header">
                 <div class="icon-circle">🎓</div>
-                <h1>Create your assignment cover page</h1>
-                <p>Fill in the details below and download a ready-to-print PDF.</p>
+                <h1>BUP Cover Generator</h1>
+                <p>Fill in the details to generate your assignment cover.</p>
             </header>
 
             <form id="coverForm">
                 <div class="card">
-                    <h3>Cover details</h3>
-                    
-                    <div class="form-row">
+                    <div class="form-row split">
                         <div class="form-group">
                             <label>Faculty *</label>
                             <select id="faculty" onchange="updateDepartments()" required>
-                                <option value="">Select faculty</option>
-                                <option value="Faculty of Science and Technology (FST)">Faculty of Science and Technology (FST)</option>
-                                <option value="Faculty of Business Studies (FBS)">Faculty of Business Studies (FBS)</option>
-                                <option value="Faculty of Arts and Social Sciences (FASS)">Faculty of Arts and Social Sciences (FASS)</option>
+                                <option value="">Select Faculty</option>
+                                <option value="Faculty of Science and Technology">Faculty of Science and Technology</option>
+                                <option value="Faculty of Business Studies">Faculty of Business Studies</option>
+                                <option value="Faculty of Arts and Social Sciences">Faculty of Arts and Social Sciences</option>
                             </select>
                         </div>
-                    </div>
-
-                    <div class="form-row">
                         <div class="form-group">
                             <label>Department *</label>
                             <select id="dept" required>
-                                <option value="">Select a faculty first</option>
+                                <option value="">Select Department</option>
                             </select>
                         </div>
                     </div>
@@ -45,17 +40,12 @@
                     <div class="form-row split">
                         <div class="form-group">
                             <label>Course Title *</label>
-                            <input type="text" id="courseTitle" placeholder="e.g. Digital Signal Processing" required>
+                            <input type="text" id="courseTitle" placeholder="e.g. digi" required>
                         </div>
                         <div class="form-group">
                             <label>Course Code *</label>
-                            <input type="text" id="courseCode" placeholder="ICE 3107" required>
+                            <input type="text" id="courseCode" placeholder="e.g. ice3108" required>
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Assignment Topic</label>
-                        <input type="text" id="topic" placeholder="Optional — e.g. Image Compression Techniques">
                     </div>
 
                     <div class="form-row split">
@@ -72,11 +62,7 @@
                     <div class="form-row split">
                         <div class="form-group">
                             <label>Section</label>
-                            <select id="section">
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                            </select>
+                            <input type="text" id="section" value="A">
                         </div>
                         <div class="form-group">
                             <label>Semester</label>
@@ -103,65 +89,58 @@
                         <div class="form-row split">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" id="teacherName" placeholder="Dr. John Doe">
+                                <input type="text" id="teacherName" placeholder="Md Paranto">
                             </div>
                             <div class="form-group">
                                 <label>Designation</label>
-                                <input type="text" id="teacherDesignation" placeholder="Assistant Professor">
+                                <input type="text" id="teacherDesignation" placeholder="Lecturer">
                             </div>
                         </div>
                         <div class="form-group">
                             <label>Department</label>
-                            <input type="text" id="teacherDept" placeholder="Department of ICT, BUP">
+                            <input type="text" id="teacherDept" placeholder="Department of ICT">
                         </div>
                     </div>
 
-                    <button type="button" class="btn-generate" onclick="generatePDF()">
-                        <span>📥</span> Generate & Download PDF
-                    </button>
+                    <button type="button" class="btn-generate" onclick="generatePDF()">Download Cover Page (PDF)</button>
                 </div>
             </form>
-            
-            <footer class="site-footer">
-                <p>Made for BUP students • Cover format matches the official template.</p>
-            </footer>
         </div>
     </div>
 
-    <div id="pdf-template" style="display: none;">
-        <div style="padding: 50px; text-align: center; font-family: serif; color: #000; width: 210mm; height: 297mm; background: white; margin: auto; position: relative;">
-            <h1 style="color: #006400; font-size: 32px; margin: 0;">Bangladesh University of Professionals</h1>
-            <img src="logo.png" style="width: 130px; margin: 30px auto; display: block;">
-            <p id="pdfFaculty" style="font-weight: bold; font-size: 20px; margin: 5px 0;"></p>
-            <p id="pdfDept" style="font-weight: bold; font-size: 18px; margin: 5px 0;"></p>
-
-            <h1 style="font-size: 50px; color: #1e90ff; margin: 60px 0; border-bottom: 2px solid #1e90ff; display: inline-block;">Assignment</h1>
-
-            <div style="font-size: 20px; margin-bottom: 50px; line-height: 1.8;">
-                <p><strong>Course Title:</strong> <span id="pdfCourseTitle"></span></p>
-                <p><strong>Course Code:</strong> <span id="pdfCourseCode"></span></p>
-                <p id="pdfTopicRow"><strong>Topic:</strong> <span id="pdfTopic"></span></p>
+    <div id="pdf-container" style="position: absolute; left: -9999px;">
+        <div id="pdf-template" style="width: 210mm; min-height: 297mm; padding: 20mm; background: white; color: black; font-family: 'Times New Roman', Times, serif; box-sizing: border-box; display: flex; flex-direction: column;">
+            
+            <div style="text-align: center;">
+                <h1 style="color: #238a44; font-size: 26pt; margin: 0;">Bangladesh University of Professionals</h1>
+                <img src="logo.png" style="width: 120px; margin: 25px auto; display: block;">
+                <p id="pFaculty" style="font-weight: bold; font-size: 16pt; margin: 5px 0;"></p>
+                <p id="pDept" style="font-weight: bold; font-size: 14pt; margin: 0;"></p>
+                
+                <h1 style="font-size: 48pt; color: #5bc0de; margin: 50px 0 30px 0;">Assignment</h1>
+                
+                <p style="font-size: 20pt; margin: 10px 0;"><strong>Course Title:</strong> <span id="pTitle"></span></p>
+                <p style="font-size: 20pt; margin: 10px 0;"><strong>Course Code:</strong> <span id="pCode"></span></p>
             </div>
 
-            <div style="display: flex; justify-content: space-between; text-align: left; margin-top: 50px;">
-                <div style="width: 45%;">
-                    <h3 style="border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px;">Submitted By</h3>
-                    <p><strong>Name:</strong> <span id="pdfName"></span></p>
-                    <p><strong>Student ID:</strong> <span id="pdfId"></span></p>
-                    <p><strong>Section:</strong> <span id="pdfSection"></span></p>
-                    <p><strong>Semester:</strong> <span id="pdfSemester"></span></p>
+            <div style="display: flex; justify-content: space-between; margin-top: 80px; padding: 0 10px;">
+                <div style="width: 48%; text-align: left;">
+                    <h3 style="font-size: 18pt; margin-bottom: 15px;">Submitted By</h3>
+                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Name:</strong> <span id="pName"></span></p>
+                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Student ID:</strong> <span id="pId"></span></p>
+                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Section:</strong> <span id="pSection"></span></p>
+                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Semester:</strong> <span id="pSemester"></span></p>
                 </div>
-                <div style="width: 45%;">
-                    <h3 style="border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px;">Submitted To</h3>
-                    <p id="pdfTeacherName" style="font-weight: bold;"></p>
-                    <p id="pdfTeacherDesig"></p>
-                    <p id="pdfTeacherDept"></p>
-                    <p>BUP</p>
+                <div style="width: 48%; text-align: left;">
+                    <h3 style="font-size: 18pt; margin-bottom: 15px;">Submitted To</h3>
+                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Name:</strong> <span id="pTName"></span></p>
+                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Designation:</strong> <span id="pTDesig"></span></p>
+                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Department:</strong> <span id="pTDept"></span></p>
                 </div>
             </div>
 
-            <div style="position: absolute; bottom: 80px; width: 100%; left: 0; text-align: center;">
-                <p style="font-size: 18px;"><strong>Submission Date:</strong> <span id="pdfDate"></span></p>
+            <div style="margin-top: auto; padding-bottom: 40px; text-align: center;">
+                <p style="font-size: 16pt;"><strong>Submission Date:</strong> <span id="pDate"></span></p>
             </div>
         </div>
     </div>
