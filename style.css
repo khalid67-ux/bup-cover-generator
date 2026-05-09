@@ -1,4 +1,4 @@
-body { background: #f0fdf4; font-family: 'Inter', -apple-system, sans-serif; margin: 0; padding: 40px 20px; }
+body { background: #f0fdf4; font-family: 'Inter', sans-serif; margin: 0; padding: 40px 20px; }
 .page-wrapper { display: flex; justify-content: center; }
 .form-container { width: 100%; max-width: 650px; }
 .form-header { text-align: center; margin-bottom: 30px; }
@@ -8,10 +8,7 @@ body { background: #f0fdf4; font-family: 'Inter', -apple-system, sans-serif; mar
 .form-row.split { display: flex; gap: 20px; }
 label { display: block; font-weight: 600; font-size: 14px; margin-bottom: 8px; color: #444; }
 input, select { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 15px; outline: none; box-sizing: border-box; }
-input:focus { border-color: #238a44; }
 .submitted-to-box { background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px dashed #cbd5e1; margin-top: 20px; }
-.submitted-to-box h4 { margin: 0 0 15px 0; color: #238a44; }
 .btn-generate { width: 100%; background: #238a44; color: white; padding: 16px; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; margin-top: 25px; transition: 0.3s; }
-.btn-generate:hover { background: #1a6d35; transform: translateY(-2px); }
-
+.btn-generate:hover { background: #1a6d35; }
 @media (max-width: 550px) { .form-row.split { flex-direction: column; gap: 0; } }
