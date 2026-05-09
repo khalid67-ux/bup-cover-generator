@@ -1,0 +1,152 @@
+/* style.css */
+
+body{
+  background:#f3f5f7;
+  font-family:"Times New Roman", serif;
+}
+
+/* NAVBAR */
+
+.custom-navbar{
+  background:#0b3d2e;
+  padding:15px 0;
+}
+
+.navbar-brand{
+  color:white !important;
+  font-size:28px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+/* MAIN */
+
+.main-box{
+  max-width:1200px;
+  margin:40px auto;
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 0 25px rgba(0,0,0,0.1);
+}
+
+.left-side{
+  background:#0f5132;
+  color:white;
+  padding:40px;
+  height:100%;
+}
+
+.left-side h2{
+  margin-bottom:25px;
+  font-weight:bold;
+}
+
+.cover-page{
+  width:794px;
+  min-height:1123px;
+  background:#efefef;
+  margin:auto;
+  padding:60px 70px;
+}
+
+.uni-title{
+  text-align:center;
+  color:#159947;
+  font-size:34px;
+  font-weight:bold;
+  margin-bottom:25px;
+}
+
+.logo{
+  width:180px;
+  display:block;
+  margin:0 auto 25px auto;
+}
+
+.faculty{
+  text-align:center;
+  font-size:22px;
+  font-weight:bold;
+  line-height:1.5;
+}
+
+.assignment{
+  text-align:center;
+  color:#1ea5ff;
+  font-size:58px;
+  font-weight:bold;
+  margin-top:30px;
+}
+
+.course{
+  text-align:center;
+  margin-top:30px;
+  font-size:24px;
+  line-height:2;
+}
+
+.info-area{
+  margin-top:120px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.info-box{
+  width:45%;
+  font-size:22px;
+  line-height:2;
+}
+
+.info-box h3{
+  font-weight:bold;
+  margin-bottom:25px;
+}
+
+.label{
+  font-weight:bold;
+}
+
+.submission-date{
+  text-align:center;
+  margin-top:120px;
+  font-size:20px;
+  font-weight:bold;
+}
+
+/* FOOTER */
+
+.footer{
+  background:#0b3d2e;
+  color:white;
+  text-align:center;
+  padding:18px 10px;
+  margin-top:40px;
+  font-size:18px;
+  font-weight:500;
+}
+
+.footer p{
+  margin:0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .cover-page{
+    width:100%;
+    min-height:auto;
+    padding:30px 20px;
+  }
+
+  .info-area{
+    flex-direction:column;
+    gap:40px;
+  }
+
+  .info-box{
+    width:100%;
+  }
+
+}
