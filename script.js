@@ -19,17 +19,22 @@ function updateDepartments() {
 
 async function generatePDF() {
     const nameInput = document.getElementById('studentName').value;
-    if(!nameInput) { alert("Please enter your name!"); return; }
+    if(!nameInput) { 
+        alert("Please enter your name!"); 
+        return; 
+    }
 
     const btn = document.querySelector('.btn-generate');
     btn.innerText = "Processing...";
     btn.disabled = true;
 
+    // Mapping Form Data to PDF Template
     document.getElementById('pFaculty').innerText = document.getElementById('faculty').value;
     document.getElementById('pDept').innerText = "Department of " + document.getElementById('dept').value;
     document.getElementById('pTitle').innerText = document.getElementById('courseTitle').value;
     document.getElementById('pCode').innerText = document.getElementById('courseCode').value;
     
+    // Assignment Topic Logic
     const topicValue = document.getElementById('topic').value;
     const pTopicRow = document.getElementById('pTopicRow');
     if(topicValue) {
@@ -47,24 +52,37 @@ async function generatePDF() {
     document.getElementById('pTDesig').innerText = document.getElementById('teacherDesignation').value;
     document.getElementById('pTDept').innerText = document.getElementById('teacherDept').value;
     
+    // Date Formatting (DD/MM/YYYY)
     const rawDate = document.getElementById('subDate').value;
     document.getElementById('pDate').innerText = rawDate ? new Date(rawDate).toLocaleDateString('en-GB') : "";
 
     const element = document.getElementById('pdf-template');
+    
+    // PDF Generation Options
     const opt = {
         margin: 0,
         filename: `BUP_Cover_${nameInput.replace(/\s+/g, '_')}.pdf`,
         image: { type: 'jpeg', quality: 1.0 },
-        html2canvas: { scale: 3, useCORS: true, scrollY: 0, scrollX: 0, x: 0, windowWidth: 794 },
+        html2canvas: { 
+            scale: 3, 
+            useCORS: true, 
+            scrollY: 0, 
+            scrollX: 0, 
+            x: 0, 
+            windowWidth: 794 // Ensures center alignment in A4
+        },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
     try {
+        // Generate and Save PDF
         await html2pdf().set(opt).from(element).save();
     } catch (err) {
-        console.error(err);
+        console.error("PDF Generation Error:", err);
+        alert("Failed to generate PDF. Please try again.");
     } finally {
-        btn.innerText = "Download Cover Page (PDF)";
+        // Reset Button State
+        btn.innerText = "Download Cover Page";
         btn.disabled = false;
     }
 }
