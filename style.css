@@ -1,152 +1,26 @@
-/* style.css */
+:root { --bup-green: #004d40; --btn-yellow: #ffc107; }
+body { margin: 0; font-family: sans-serif; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
 
-body{
-  background:#f3f5f7;
-  font-family:"Times New Roman", serif;
-}
+.main-header { background: var(--bup-green); color: white; padding: 10px 20px; }
+.main-wrapper { display: flex; flex: 1; overflow: hidden; }
 
-/* NAVBAR */
+/* Sidebar */
+.sidebar { width: 350px; background: var(--bup-green); color: white; padding: 20px; overflow-y: auto; }
+.sidebar label { display: block; margin-top: 10px; font-size: 14px; }
+.sidebar input, .sidebar select { width: 100%; padding: 8px; margin-top: 5px; border-radius: 4px; border: none; }
+.btn-update { background: white; margin-top: 20px; width: 100%; padding: 10px; cursor: pointer; border: none; font-weight: bold; }
+.btn-download { background: var(--btn-yellow); margin-top: 10px; width: 100%; padding: 10px; cursor: pointer; border: none; font-weight: bold; }
 
-.custom-navbar{
-  background:#0b3d2e;
-  padding:15px 0;
-}
+/* Preview Area */
+.preview-area { flex: 1; background: #d1d1d1; padding: 40px; overflow-y: auto; display: flex; justify-content: center; }
+.pdf-page { width: 595px; background: white; padding: 40px; box-shadow: 0 0 15px rgba(0,0,0,0.2); text-align: center; min-height: 842px; }
 
-.navbar-brand{
-  color:white !important;
-  font-size:28px;
-  font-weight:bold;
-  letter-spacing:1px;
-}
+.univ-name { color: #2e7d32; }
+.logo { width: 120px; margin: 20px 0; }
+.bold-text { font-weight: bold; margin: 5px 0; }
+.assignment-title { font-size: 40px; color: #03a9f4; margin: 40px 0; }
+.pdf-info-grid { display: flex; justify-content: space-between; text-align: left; margin-top: 50px; }
+.info-box h3 { border-bottom: 2px solid #000; display: inline-block; }
+.pdf-footer { margin-top: 100px; font-size: 18px; }
 
-/* MAIN */
-
-.main-box{
-  max-width:1200px;
-  margin:40px auto;
-  background:white;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 0 25px rgba(0,0,0,0.1);
-}
-
-.left-side{
-  background:#0f5132;
-  color:white;
-  padding:40px;
-  height:100%;
-}
-
-.left-side h2{
-  margin-bottom:25px;
-  font-weight:bold;
-}
-
-.cover-page{
-  width:794px;
-  min-height:1123px;
-  background:#efefef;
-  margin:auto;
-  padding:60px 70px;
-}
-
-.uni-title{
-  text-align:center;
-  color:#159947;
-  font-size:34px;
-  font-weight:bold;
-  margin-bottom:25px;
-}
-
-.logo{
-  width:180px;
-  display:block;
-  margin:0 auto 25px auto;
-}
-
-.faculty{
-  text-align:center;
-  font-size:22px;
-  font-weight:bold;
-  line-height:1.5;
-}
-
-.assignment{
-  text-align:center;
-  color:#1ea5ff;
-  font-size:58px;
-  font-weight:bold;
-  margin-top:30px;
-}
-
-.course{
-  text-align:center;
-  margin-top:30px;
-  font-size:24px;
-  line-height:2;
-}
-
-.info-area{
-  margin-top:120px;
-  display:flex;
-  justify-content:space-between;
-}
-
-.info-box{
-  width:45%;
-  font-size:22px;
-  line-height:2;
-}
-
-.info-box h3{
-  font-weight:bold;
-  margin-bottom:25px;
-}
-
-.label{
-  font-weight:bold;
-}
-
-.submission-date{
-  text-align:center;
-  margin-top:120px;
-  font-size:20px;
-  font-weight:bold;
-}
-
-/* FOOTER */
-
-.footer{
-  background:#0b3d2e;
-  color:white;
-  text-align:center;
-  padding:18px 10px;
-  margin-top:40px;
-  font-size:18px;
-  font-weight:500;
-}
-
-.footer p{
-  margin:0;
-}
-
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-  .cover-page{
-    width:100%;
-    min-height:auto;
-    padding:30px 20px;
-  }
-
-  .info-area{
-    flex-direction:column;
-    gap:40px;
-  }
-
-  .info-box{
-    width:100%;
-  }
-
-}
+.bottom-bar { background: var(--bup-green); color: white; text-align: center; padding: 5px; }
