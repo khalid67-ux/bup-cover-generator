@@ -1,46 +1,55 @@
-const depts = {
+const departmentData = {
     "Faculty of Science and Technology (FST)": ["ICT", "CSE", "Environmental Science"],
     "Faculty of Business Studies (FBS)": ["Accounting", "Finance", "Management"],
-    "Faculty of Arts and Social Sciences (FASS)": ["Economics", "English", "Public Administration"]
+    "Faculty of Arts and Social Sciences (FASS)": ["Economics", "English", "Sociology"]
 };
 
 function updateDepartments() {
-    const f = document.getElementById('faculty').value;
-    const d = document.getElementById('dept');
-    d.innerHTML = '<option value="">Select Department</option>';
-    if(f && depts[f]) {
-        depts[f].forEach(item => {
-            d.innerHTML += `<option value="${item}">${item}</option>`;
+    const faculty = document.getElementById('faculty').value;
+    const deptSelect = document.getElementById('dept');
+    deptSelect.innerHTML = '<option value="">Select Dept</option>';
+    
+    if (faculty && departmentData[faculty]) {
+        departmentData[faculty].forEach(dept => {
+            deptSelect.innerHTML += `<option value="${dept}">${dept}</option>`;
         });
     }
     updatePreview();
 }
 
 function updatePreview() {
-    document.getElementById('viewFaculty').innerText = document.getElementById('faculty').value || "Faculty Name";
-    document.getElementById('viewDept').innerText = document.getElementById('dept').value ? "Department of " + document.getElementById('dept').value : "Department Name";
-    document.getElementById('viewCourseTitle').innerText = document.getElementById('courseTitle').value || "Digital Signal Processing";
-    document.getElementById('viewCourseCode').innerText = document.getElementById('courseCode').value || "ICE 3107";
-    document.getElementById('viewName').innerText = document.getElementById('studentName').value || "Your Name";
-    document.getElementById('viewID').innerText = document.getElementById('studentId').value || "ID Number";
-    document.getElementById('viewTeacher').innerText = document.getElementById('teacherInfo').value || "Lecturer Name";
-    
-    const dateInput = document.getElementById('subDate').value;
-    document.getElementById('viewDate').innerText = dateInput ? new Date(dateInput).toLocaleDateString('en-GB') : "05/05/2026";
+    // Inputs
+    const faculty = document.getElementById('faculty').value;
+    const dept = document.getElementById('dept').value;
+    const title = document.getElementById('courseTitle').value;
+    const code = document.getElementById('courseCode').value;
+    const name = document.getElementById('studentName').value;
+    const id = document.getElementById('studentId').value;
+    const teacher = document.getElementById('teacherInfo').value;
+    const date = document.getElementById('subDate').value;
+
+    // View Update
+    document.getElementById('viewFaculty').innerText = faculty || "Faculty Name";
+    document.getElementById('viewDept').innerText = dept ? "Department of " + dept : "Department Name";
+    document.getElementById('viewCourseTitle').innerText = title || "Course Title";
+    document.getElementById('viewCourseCode').innerText = code || "Course Code";
+    document.getElementById('viewName').innerText = name || "Student Name";
+    document.getElementById('viewID').innerText = id || "Student ID";
+    document.getElementById('viewTeacher').innerText = teacher || "Lecturer Name";
+    document.getElementById('viewDate').innerText = date ? new Date(date).toLocaleDateString('en-GB') : "Submission Date";
 }
 
 function generatePDF() {
     const element = document.getElementById('pdf-template');
-    const name = document.getElementById('studentName').value || "CoverPage";
+    const studentName = document.getElementById('studentName').value || "Assignment";
     
-    // ডাউনলোড করার সময় প্রিভিউ এরিয়া জুম আউট সমস্যা এড়াতে width ফিক্স করা
-    const opt = {
+    const options = {
         margin: 0,
-        filename: `${name}_Cover.pdf`,
+        filename: `${studentName}_Cover.pdf`,
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 3, useCORS: true, letterRendering: true },
+        html2canvas: { scale: 2, useCORS: true },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
-    html2pdf().set(opt).from(element).save();
+    html2pdf().set(options).from(element).save();
 }
