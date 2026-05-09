@@ -94,21 +94,26 @@
 
                     <div class="submitted-to-box">
                         <h4>Submitted To</h4>
+
                         <div class="form-row split">
                             <div class="form-group">
                                 <label>Teacher Name</label>
                                 <input type="text" id="teacherName">
                             </div>
+
                             <div class="form-group">
                                 <label>Designation</label>
                                 <input type="text" id="teacherDesignation">
                             </div>
                         </div>
+
                         <label>Teacher's Department</label>
                         <input type="text" id="teacherDept">
                     </div>
 
-                    <button type="button" class="btn-generate" onclick="generatePDF()">Download Cover Page</button>
+                    <button type="button" class="btn-generate" onclick="generatePDF()">
+                        Download Cover Page
+                    </button>
                 </div>
             </form>
 
@@ -118,52 +123,234 @@
         </div>
     </div>
 
+    <!-- PDF TEMPLATE -->
     <div id="pdf-container" style="position: absolute; left: -9999px; top: 0;">
-        <div id="pdf-template" style="width: 210mm; height: 296mm; padding: 30mm 20mm 20mm 20mm; background: white; color: black; font-family: 'Times New Roman', Times, serif; box-sizing: border-box; display: flex; flex-direction: column; align-items: center;">
-            
+
+        <div id="pdf-template"
+            style="
+                width: 210mm;
+                height: 296mm;
+                padding: 30mm 20mm 20mm 20mm;
+                background: white;
+                color: black;
+                font-family: 'Times New Roman', Times, serif;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            ">
+
+            <!-- TOP SECTION -->
             <div style="text-align: center; width: 100%;">
-                <h2 style="color: #238a44; font-size: 21pt; margin: 0; text-transform: uppercase; text-align: center; width: 100%; font-family: 'Times New Roman', Times, serif;">Bangladesh University of Professionals</h2>
-                <img src="logo.png" style="width: 110px; margin: 25px auto; display: block;">
-                <p id="pFaculty" style="font-weight: bold; font-size: 16pt; margin: 5px 0; font-family: 'Times New Roman', Times, serif; text-align: center;"></p>
-                <p id="pDept" style="font-weight: bold; font-size: 14pt; margin: 0; font-family: 'Times New Roman', Times, serif; text-align: center;"></p>
-                
-                <h1 style="font-size: 45pt; color: #5bc0de; margin: 40px 0 20px 0; font-family: 'Times New Roman', Times, serif; text-align: center;">Assignment</h1>
-                
-                <div style="font-size: 18pt; margin: 15px auto; width: 90%; font-family: 'Times New Roman', Times, serif; text-align: center;">
-                    <p style="margin: 10px 0;"><strong>Course Title:</strong> <span id="pTitle"></span></p>
-                    <p style="margin: 10px 0;"><strong>Course Code:</strong> <span id="pCode"></span></p>
-                    <p id="pTopicRow" style="margin: 10px 0; display: none;"><strong>Topic:</strong> <span id="pTopic"></span></p>
+
+                <!-- BUP NAME -->
+                <h2
+                    style="
+                        color: #238a44;
+                        font-size: 19pt;
+                        margin: 0;
+                        text-transform: uppercase;
+                        text-align: center;
+                        width: 100%;
+                        font-family: 'Times New Roman', Times, serif;
+                        white-space: nowrap;
+                    ">
+                    Bangladesh University of Professionals
+                </h2>
+
+                <!-- LOGO -->
+                <img src="logo.png"
+                    style="
+                        width: 110px;
+                        margin: 25px auto;
+                        display: block;
+                    ">
+
+                <!-- FACULTY -->
+                <p id="pFaculty"
+                    style="
+                        font-weight: bold;
+                        font-size: 16pt;
+                        margin: 5px 0;
+                        font-family: 'Times New Roman', Times, serif;
+                        text-align: center;
+                    ">
+                </p>
+
+                <!-- DEPARTMENT -->
+                <p id="pDept"
+                    style="
+                        font-weight: bold;
+                        font-size: 14pt;
+                        margin: 0;
+                        font-family: 'Times New Roman', Times, serif;
+                        text-align: center;
+                    ">
+                </p>
+
+                <!-- ASSIGNMENT -->
+                <h1
+                    style="
+                        font-size: 45pt;
+                        color: #5bc0de;
+                        margin: 25px 0 15px 0;
+                        font-family: 'Times New Roman', Times, serif;
+                        text-align: center;
+                    ">
+                    Assignment
+                </h1>
+
+                <!-- COURSE INFO -->
+                <div
+                    style="
+                        font-size: 18pt;
+                        margin: 15px auto;
+                        width: 90%;
+                        font-family: 'Times New Roman', Times, serif;
+                        text-align: center;
+                    ">
+
+                    <p style="margin: 10px 0;">
+                        <strong>Course Title:</strong>
+                        <span id="pTitle"></span>
+                    </p>
+
+                    <p style="margin: 10px 0;">
+                        <strong>Course Code:</strong>
+                        <span id="pCode"></span>
+                    </p>
+
+                    <p id="pTopicRow"
+                        style="
+                            margin: 10px 0;
+                            display: none;
+                        ">
+                        <strong>Topic:</strong>
+                        <span id="pTopic"></span>
+                    </p>
                 </div>
             </div>
 
+            <!-- SUBMITTED SECTION -->
             <div style="width: 95%; margin: 60px auto 0 auto;">
-                <table style="width: 100%; border-collapse: collapse; border: none; font-family: 'Times New Roman', Times, serif;">
+
+                <table
+                    style="
+                        width: 100%;
+                        border-collapse: collapse;
+                        border: none;
+                        font-family: 'Times New Roman', Times, serif;
+                    ">
+
                     <tr>
-                        <td style="width: 45%; vertical-align: top; text-align: left;">
-                            <h3 style="font-size: 18pt; margin-bottom: 12px; border-bottom: 2px solid black; display: inline-block; font-family: 'Times New Roman', Times, serif;">Submitted By</h3>
-                            <p style="font-size: 13pt; margin: 6px 0;"><strong>Name:</strong> <span id="pName"></span></p>
-                            <p style="font-size: 13pt; margin: 6px 0;"><strong>Student ID:</strong> <span id="pId"></span></p>
-                            <p style="font-size: 13pt; margin: 6px 0;"><strong>Semester:</strong> <span id="pSemester"></span></p>
-                            <p style="font-size: 13pt; margin: 6px 0;"><strong>Section:</strong> <span id="pSection"></span></p>
+
+                        <!-- SUBMITTED BY -->
+                        <td
+                            style="
+                                width: 45%;
+                                vertical-align: top;
+                                text-align: left;
+                            ">
+
+                            <h3
+                                style="
+                                    font-size: 18pt;
+                                    margin-bottom: 12px;
+                                    border-bottom: 2px solid black;
+                                    display: inline-block;
+                                    font-family: 'Times New Roman', Times, serif;
+                                ">
+                                Submitted By
+                            </h3>
+
+                            <p style="font-size: 13pt; margin: 6px 0;">
+                                <strong>Name:</strong>
+                                <span id="pName"></span>
+                            </p>
+
+                            <p style="font-size: 13pt; margin: 6px 0;">
+                                <strong>Student ID:</strong>
+                                <span id="pId"></span>
+                            </p>
+
+                            <p style="font-size: 13pt; margin: 6px 0;">
+                                <strong>Semester:</strong>
+                                <span id="pSemester"></span>
+                            </p>
+
+                            <p style="font-size: 13pt; margin: 6px 0;">
+                                <strong>Section:</strong>
+                                <span id="pSection"></span>
+                            </p>
                         </td>
+
+                        <!-- GAP -->
                         <td style="width: 10%;"></td>
-                        <td style="width: 45%; vertical-align: top; text-align: left;">
-                            <h3 style="font-size: 18pt; margin-bottom: 12px; border-bottom: 2px solid black; display: inline-block; font-family: 'Times New Roman', Times, serif;">Submitted To</h3>
-                            <p style="font-size: 13pt; margin: 6px 0;"><strong>Name:</strong> <span id="pTName"></span></p>
-                            <p style="font-size: 13pt; margin: 6px 0;"><strong>Designation:</strong> <span id="pTDesig"></span></p>
-                            <p style="font-size: 13pt; margin: 6px 0;"><strong>Department:</strong> <span id="pTDept"></span></p>
-                            <p style="font-size: 13pt; margin: 6px 0;">BUP</p>
+
+                        <!-- SUBMITTED TO -->
+                        <td
+                            style="
+                                width: 45%;
+                                vertical-align: top;
+                                text-align: left;
+                                padding-left: 35px;
+                            ">
+
+                            <h3
+                                style="
+                                    font-size: 18pt;
+                                    margin-bottom: 12px;
+                                    border-bottom: 2px solid black;
+                                    display: inline-block;
+                                    font-family: 'Times New Roman', Times, serif;
+                                ">
+                                Submitted To
+                            </h3>
+
+                            <p style="font-size: 13pt; margin: 6px 0;">
+                                <strong>Name:</strong>
+                                <span id="pTName"></span>
+                            </p>
+
+                            <p style="font-size: 13pt; margin: 6px 0;">
+                                <strong>Designation:</strong>
+                                <span id="pTDesig"></span>
+                            </p>
+
+                            <p style="font-size: 13pt; margin: 6px 0;">
+                                <strong>Department:</strong>
+                                <span id="pTDept"></span>
+                            </p>
+
+                            <p style="font-size: 13pt; margin: 6px 0;">
+                                BUP
+                            </p>
                         </td>
+
                     </tr>
                 </table>
             </div>
 
-            <div style="margin-top: auto; padding-bottom: 50px; text-align: center; width: 100%; font-family: 'Times New Roman', Times, serif;">
-                <p style="font-size: 16pt;"><strong>Submission Date:</strong> <span id="pDate"></span></p>
+            <!-- DATE -->
+            <div
+                style="
+                    margin-top: auto;
+                    padding-bottom: 50px;
+                    text-align: center;
+                    width: 100%;
+                    font-family: 'Times New Roman', Times, serif;
+                ">
+
+                <p style="font-size: 16pt;">
+                    <strong>Submission Date:</strong>
+                    <span id="pDate"></span>
+                </p>
             </div>
+
         </div>
     </div>
 
     <script src="script.js"></script>
+
 </body>
 </html>
