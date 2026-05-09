@@ -114,7 +114,6 @@ async function generatePDF() {
         document.getElementById('teacherDesignation').value;
 
     document.getElementById('pTDept').innerText =
-        "Department of " +
         document.getElementById('teacherDept').value;
 
     // =========================
