@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUP Assignment Cover Generator</title>
+    <title>BUP Cover Generator</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
@@ -108,39 +108,42 @@
         </div>
     </div>
 
-    <div id="pdf-container" style="position: absolute; left: -9999px;">
-        <div id="pdf-template" style="width: 210mm; min-height: 297mm; padding: 20mm; background: white; color: black; font-family: 'Times New Roman', Times, serif; box-sizing: border-box; display: flex; flex-direction: column;">
+    <div id="pdf-container" style="position: absolute; left: -9999px; top: 0;">
+        <div id="pdf-template" style="width: 210mm; height: 296mm; padding: 20mm; background: white; color: black; font-family: 'Times New Roman', Times, serif; box-sizing: border-box;">
             
             <div style="text-align: center;">
-                <h1 style="color: #238a44; font-size: 26pt; margin: 0;">Bangladesh University of Professionals</h1>
-                <img src="logo.png" style="width: 120px; margin: 25px auto; display: block;">
+                <h1 style="color: #238a44; font-size: 26pt; margin: 0; padding: 0;">Bangladesh University of Professionals</h1>
+                <img src="logo.png" style="width: 120px; margin: 20px auto; display: block;">
                 <p id="pFaculty" style="font-weight: bold; font-size: 16pt; margin: 5px 0;"></p>
                 <p id="pDept" style="font-weight: bold; font-size: 14pt; margin: 0;"></p>
                 
-                <h1 style="font-size: 48pt; color: #5bc0de; margin: 50px 0 30px 0;">Assignment</h1>
+                <h1 style="font-size: 45pt; color: #5bc0de; margin: 40px 0 20px 0;">Assignment</h1>
                 
-                <p style="font-size: 20pt; margin: 10px 0;"><strong>Course Title:</strong> <span id="pTitle"></span></p>
-                <p style="font-size: 20pt; margin: 10px 0;"><strong>Course Code:</strong> <span id="pCode"></span></p>
+                <p style="font-size: 18pt; margin: 10px 0;"><strong>Course Title:</strong> <span id="pTitle"></span></p>
+                <p style="font-size: 18pt; margin: 10px 0;"><strong>Course Code:</strong> <span id="pCode"></span></p>
             </div>
 
-            <div style="display: flex; justify-content: space-between; margin-top: 80px; padding: 0 10px;">
-                <div style="width: 48%; text-align: left;">
-                    <h3 style="font-size: 18pt; margin-bottom: 15px;">Submitted By</h3>
-                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Name:</strong> <span id="pName"></span></p>
-                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Student ID:</strong> <span id="pId"></span></p>
-                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Section:</strong> <span id="pSection"></span></p>
-                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Semester:</strong> <span id="pSemester"></span></p>
-                </div>
-                <div style="width: 48%; text-align: left;">
-                    <h3 style="font-size: 18pt; margin-bottom: 15px;">Submitted To</h3>
-                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Name:</strong> <span id="pTName"></span></p>
-                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Designation:</strong> <span id="pTDesig"></span></p>
-                    <p style="font-size: 14pt; margin: 8px 0;"><strong>Department:</strong> <span id="pTDept"></span></p>
-                </div>
-            </div>
+            <table style="width: 100%; margin-top: 60px; border: none;">
+                <tr>
+                    <td style="width: 50%; vertical-align: top; text-align: left;">
+                        <h3 style="font-size: 18pt; margin-bottom: 10px; border-bottom: 2px solid black; display: inline-block;">Submitted By</h3>
+                        <p style="font-size: 13pt; margin: 5px 0;"><strong>Name:</strong> <span id="pName"></span></p>
+                        <p style="font-size: 13pt; margin: 5px 0;"><strong>Student ID:</strong> <span id="pId"></span></p>
+                        <p style="font-size: 13pt; margin: 5px 0;"><strong>Section:</strong> <span id="pSection"></span></p>
+                        <p style="font-size: 13pt; margin: 5px 0;"><strong>Semester:</strong> <span id="pSemester"></span></p>
+                    </td>
+                    <td style="width: 50%; vertical-align: top; text-align: left;">
+                        <h3 style="font-size: 18pt; margin-bottom: 10px; border-bottom: 2px solid black; display: inline-block;">Submitted To</h3>
+                        <p style="font-size: 13pt; margin: 5px 0;"><strong>Name:</strong> <span id="pTName"></span></p>
+                        <p style="font-size: 13pt; margin: 5px 0;"><strong>Designation:</strong> <span id="pTDesig"></span></p>
+                        <p style="font-size: 13pt; margin: 5px 0;"><strong>Department:</strong> <span id="pTDept"></span></p>
+                        <p style="font-size: 13pt; margin: 5px 0;">BUP</p>
+                    </td>
+                </tr>
+            </table>
 
-            <div style="margin-top: auto; padding-bottom: 40px; text-align: center;">
-                <p style="font-size: 16pt;"><strong>Submission Date:</strong> <span id="pDate"></span></p>
+            <div style="margin-top: 100px; text-align: center;">
+                <p style="font-size: 15pt;"><strong>Submission Date:</strong> <span id="pDate"></span></p>
             </div>
         </div>
     </div>
