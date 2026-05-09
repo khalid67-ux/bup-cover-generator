@@ -19,14 +19,25 @@ function updateDepartments() {
     }
 }
 
-function generatePDF() {
+async function generatePDF() {
     const name = document.getElementById('studentName').value;
+    
+    // তথ্য পূরণ করা হয়েছে কি না চেক করা
     if(!name || !document.getElementById('faculty').value) {
         alert("Please fill in the required fields!");
         return;
     }
 
-    // টেমপ্লেটে ডাটা পাঠানো
+    // পিডিএফ টেমপ্লেট এলিমেন্ট ধরা
+    const element = document.getElementById('pdf-template');
+    
+    // ১. পিডিএফ তৈরির আগে টেমপ্লেটটি দৃশ্যমান করা (খুবই গুরুত্বপূর্ণ)
+    element.style.display = 'block';
+    element.style.visibility = 'visible';
+    element.style.position = 'absolute';
+    element.style.left = '-9999px'; // স্ক্রিনের বাইরে পাঠিয়ে দেওয়া যাতে ইউজার না দেখে
+
+    // ২. টেমপ্লেটে ডাটা বসানো
     document.getElementById('pdfFaculty').innerText = document.getElementById('faculty').value;
     document.getElementById('pdfDept').innerText = "Department of " + document.getElementById('dept').value;
     document.getElementById('pdfCourseTitle').innerText = document.getElementById('courseTitle').value;
@@ -51,19 +62,29 @@ function generatePDF() {
     const subDate = document.getElementById('subDate').value;
     document.getElementById('pdfDate').innerText = subDate ? new Date(subDate).toLocaleDateString('en-GB') : "";
 
-    // PDF জেনারেশন
-    const element = document.getElementById('pdf-template');
-    element.style.display = 'block';
-
+    // ৩. পিডিএফ কনফিগারেশন
     const opt = {
         margin: 0,
-        filename: `Assignment_${name}.pdf`,
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 3, useCORS: true },
+        filename: `Assignment_${name.replace(/\s+/g, '_')}.pdf`,
+        image: { type: 'jpeg', quality: 1.0 },
+        html2canvas: { 
+            scale: 2, 
+            useCORS: true, 
+            logging: true, 
+            letterRendering: true 
+        },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     };
 
-    html2pdf().set(opt).from(element).save().then(() => {
+    // ৪. পিডিএফ জেনারেট এবং ডাউনলোড
+    try {
+        await html2pdf().set(opt).from(element).save();
+    } catch (error) {
+        console.error("PDF Error: ", error);
+        alert("Something went wrong. Try again on a different browser.");
+    } finally {
+        // ৫. কাজ শেষ হলে আবার হাইড করে দেওয়া
         element.style.display = 'none';
-    });
+        element.style.position = 'static';
+    }
 }
