@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUP Assignment Cover Generator</title>
+    <title>BUP Cover Generator</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
@@ -14,71 +14,87 @@
     </header>
 
     <div class="main-wrapper">
-        <!-- Sidebar Form -->
-        <aside class="sidebar">
-            <h2>Assignment Cover Generator</h2>
+        <aside class="sidebar no-print">
+            <h3>Assignment Details</h3>
             <form id="coverForm">
-                <label>Faculty Name</label>
-                <select id="faculty" onchange="updateDepartments()">
-                    <option value="">Select Faculty</option>
-                    <option value="Faculty of Science and Technology (FST)">Faculty of Science and Technology (FST)</option>
-                    <option value="Faculty of Business Studies (FBS)">Faculty of Business Studies (FBS)</option>
-                </select>
+                <div class="form-group">
+                    <label>Faculty Name</label>
+                    <select id="faculty" onchange="updateDepartments()">
+                        <option value="">Select Faculty</option>
+                        <option value="Faculty of Science and Technology (FST)">Faculty of Science and Technology (FST)</option>
+                        <option value="Faculty of Business Studies (FBS)">Faculty of Business Studies (FBS)</option>
+                        <option value="Faculty of Arts and Social Sciences (FASS)">Faculty of Arts and Social Sciences (FASS)</option>
+                    </select>
+                </div>
 
-                <label>Department Name</label>
-                <select id="dept">
-                    <option value="">Select Department</option>
-                </select>
+                <div class="form-group">
+                    <label>Department Name</label>
+                    <select id="dept" onchange="updatePreview()">
+                        <option value="">Select Department</option>
+                    </select>
+                </div>
 
-                <label>Course Title</label>
-                <input type="text" id="courseTitle" oninput="updatePreview()">
+                <div class="form-group">
+                    <label>Course Title</label>
+                    <input type="text" id="courseTitle" oninput="updatePreview()" placeholder="e.g. Digital Signal Processing">
+                </div>
 
-                <label>Course Code</label>
-                <input type="text" id="courseCode" oninput="updatePreview()">
+                <div class="form-group">
+                    <label>Course Code</label>
+                    <input type="text" id="courseCode" oninput="updatePreview()" placeholder="e.g. ICE 3107">
+                </div>
 
-                <label>Student Name</label>
-                <input type="text" id="studentName" oninput="updatePreview()">
+                <div class="form-group">
+                    <label>Student Name</label>
+                    <input type="text" id="studentName" oninput="updatePreview()">
+                </div>
 
-                <label>Student ID</label>
-                <input type="text" id="studentId" oninput="updatePreview()">
+                <div class="form-group">
+                    <label>Student ID</label>
+                    <input type="text" id="studentId" oninput="updatePreview()">
+                </div>
 
-                <label>Teacher Name & Designation</label>
-                <input type="text" id="teacherInfo" oninput="updatePreview()" placeholder="e.g. Lecturer, ICT">
+                <div class="form-group">
+                    <label>Teacher Info</label>
+                    <input type="text" id="teacherInfo" oninput="updatePreview()" placeholder="Teacher Name & Designation">
+                </div>
 
-                <label>Submission Date</label>
-                <input type="date" id="subDate" oninput="updatePreview()">
+                <div class="form-group">
+                    <label>Submission Date</label>
+                    <input type="date" id="subDate" oninput="updatePreview()">
+                </div>
 
-                <button type="button" class="btn-update" onclick="updatePreview()">Update Preview</button>
                 <button type="button" class="btn-download" onclick="generatePDF()">Download PDF</button>
             </form>
         </aside>
 
-        <!-- Preview Section -->
         <main class="preview-area">
-            <div id="pdf-template" class="pdf-page">
+            <div id="pdf-template" class="pdf-container">
                 <div class="pdf-header">
-                    <h2 class="univ-name">Bangladesh University of Professionals</h2>
-                    <img src="logo.png" alt="BUP Logo" class="logo">
+                    <h1 class="univ-name">Bangladesh University of Professionals</h1>
+                    <img src="logo.png" alt="BUP Logo" class="pdf-logo">
                     <p id="viewFaculty" class="bold-text">Faculty Name</p>
                     <p id="viewDept" class="bold-text">Department Name</p>
                 </div>
 
                 <div class="pdf-body">
-                    <h1 class="assignment-title">Assignment</h1>
-                    <p><strong>Course Title:</strong> <span id="viewCourseTitle">Digital Signal Processing</span></p>
-                    <p><strong>Course Code:</strong> <span id="viewCourseCode">ICE 3107</span></p>
+                    <h1 class="assignment-banner">Assignment</h1>
+                    <div class="course-section">
+                        <p><strong>Course Title:</strong> <span id="viewCourseTitle">Digital Signal Processing</span></p>
+                        <p><strong>Course Code:</strong> <span id="viewCourseCode">ICE 3107</span></p>
+                    </div>
                 </div>
 
                 <div class="pdf-info-grid">
-                    <div class="info-box">
-                        <h3>Submitted By</h3>
+                    <div class="info-column">
+                        <h3 class="info-title">Submitted By</h3>
                         <p><strong>Name:</strong> <span id="viewName">Md. Khalid Hasan</span></p>
                         <p><strong>Student ID:</strong> <span id="viewID">24549010067</span></p>
                         <p><strong>Section:</strong> A</p>
                     </div>
-                    <div class="info-box">
-                        <h3>Submitted To</h3>
-                        <p id="viewTeacher">[Teacher Info]</p>
+                    <div class="info-column">
+                        <h3 class="info-title">Submitted To</h3>
+                        <p id="viewTeacher">Lecturer Name</p>
                         <p>BUP</p>
                     </div>
                 </div>
@@ -90,7 +106,7 @@
         </main>
     </div>
 
-    <footer class="bottom-bar">
+    <footer class="bottom-bar no-print">
         <p>Md. Khalid Hasan, Student ICT</p>
     </footer>
 
