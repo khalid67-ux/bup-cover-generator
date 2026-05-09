@@ -1,80 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BUP Assignment Cover Generator</title>
+
     <link rel="stylesheet" href="style.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
+
 <body>
 
     <div class="page-wrapper">
+
         <div class="form-container">
+
             <header class="form-header">
+
                 <div class="icon-circle">🎓</div>
+
                 <h1>BUP Cover Generator</h1>
-                <p>Fill in the details to generate your assignment cover.</p>
+
+                <p>
+                    Fill in the details to generate your assignment cover.
+                </p>
+
             </header>
 
             <form id="coverForm">
+
                 <div class="card">
+
+                    <!-- FACULTY + DEPARTMENT -->
                     <div class="form-row split">
+
                         <div class="form-group">
+
                             <label>Faculty *</label>
+
                             <select id="faculty" onchange="updateDepartments()" required>
+
                                 <option value="">Select Faculty</option>
-                                <option value="Faculty of Science and Technology">Faculty of Science and Technology</option>
-                                <option value="Faculty of Business Studies">Faculty of Business Studies</option>
-                                <option value="Faculty of Arts and Social Sciences">Faculty of Arts and Social Sciences</option>
+
+                                <option value="Faculty of Science and Technology">
+                                    Faculty of Science and Technology
+                                </option>
+
+                                <option value="Faculty of Business Studies">
+                                    Faculty of Business Studies
+                                </option>
+
+                                <option value="Faculty of Arts and Social Sciences">
+                                    Faculty of Arts and Social Sciences
+                                </option>
+
                             </select>
+
                         </div>
+
                         <div class="form-group">
+
                             <label>Department *</label>
+
                             <select id="dept" required>
+
                                 <option value="">Select Department</option>
+
                             </select>
+
                         </div>
+
                     </div>
 
+                    <!-- COURSE -->
                     <div class="form-row split">
+
                         <div class="form-group">
+
                             <label>Course Title *</label>
+
                             <input type="text" id="courseTitle" required>
+
                         </div>
+
                         <div class="form-group">
+
                             <label>Course Code *</label>
+
                             <input type="text" id="courseCode" required>
+
                         </div>
+
                     </div>
 
+                    <!-- TOPIC -->
                     <div class="form-group">
+
                         <label>Assignment Topic (Optional)</label>
+
                         <input type="text" id="topic">
+
                     </div>
 
+                    <!-- STUDENT -->
                     <div class="form-row split">
+
                         <div class="form-group">
+
                             <label>Student Name *</label>
+
                             <input type="text" id="studentName" required>
+
                         </div>
+
                         <div class="form-group">
+
                             <label>Student ID *</label>
+
                             <input type="text" id="studentId" required>
+
                         </div>
+
                     </div>
 
+                    <!-- SECTION + SEMESTER -->
                     <div class="form-row split">
+
                         <div class="form-group">
+
                             <label>Section</label>
+
                             <select id="section">
+
                                 <option value="A">A</option>
                                 <option value="B">B</option>
+
                             </select>
+
                         </div>
+
                         <div class="form-group">
+
                             <label>Semester</label>
+
                             <select id="semester">
+
                                 <option value="1st Semester">1st Semester</option>
                                 <option value="2nd Semester">2nd Semester</option>
                                 <option value="3rd Semester">3rd Semester</option>
@@ -83,50 +155,97 @@
                                 <option value="6th Semester">6th Semester</option>
                                 <option value="7th Semester">7th Semester</option>
                                 <option value="8th Semester">8th Semester</option>
+
                             </select>
+
                         </div>
+
                     </div>
 
+                    <!-- DATE -->
                     <div class="form-group">
+
                         <label>Submission Date</label>
+
                         <input type="date" id="subDate" required>
+
                     </div>
 
+                    <!-- SUBMITTED TO -->
                     <div class="submitted-to-box">
+
                         <h4>Submitted To</h4>
 
                         <div class="form-row split">
+
                             <div class="form-group">
+
                                 <label>Teacher Name</label>
+
                                 <input type="text" id="teacherName">
+
                             </div>
 
                             <div class="form-group">
+
                                 <label>Designation</label>
+
                                 <input type="text" id="teacherDesignation">
+
                             </div>
+
                         </div>
 
                         <label>Teacher's Department</label>
+
                         <input type="text" id="teacherDept">
+
                     </div>
 
-                    <button type="button" class="btn-generate" onclick="generatePDF()">
+                    <!-- BUTTON -->
+                    <button
+                        type="button"
+                        class="btn-generate"
+                        onclick="generatePDF()">
+
                         Download Cover Page
+
                     </button>
+
                 </div>
+
             </form>
 
-            <footer style="text-align: center; margin-top: 20px; color: #4a5568; font-size: 14px;">
-                <p>Created by <strong>Md. Khalid Hasan</strong>, Student ICT</p>
+            <!-- FOOTER -->
+            <footer
+                style="
+                    text-align: center;
+                    margin-top: 20px;
+                    color: #4a5568;
+                    font-size: 14px;
+                ">
+
+                <p>
+                    Created by <strong>Md. Khalid Hasan</strong>, Student ICT
+                </p>
+
             </footer>
+
         </div>
+
     </div>
 
     <!-- PDF TEMPLATE -->
-    <div id="pdf-container" style="position: absolute; left: -9999px; top: 0;">
+    <div
+        id="pdf-container"
+        style="
+            position: absolute;
+            left: -9999px;
+            top: 0;
+        ">
 
-        <div id="pdf-template"
+        <div
+            id="pdf-template"
             style="
                 width: 210mm;
                 height: 296mm;
@@ -143,7 +262,7 @@
             <!-- TOP SECTION -->
             <div style="text-align: center; width: 100%;">
 
-                <!-- BUP NAME -->
+                <!-- BUP -->
                 <h2
                     style="
                         color: #238a44;
@@ -155,11 +274,14 @@
                         font-family: 'Times New Roman', Times, serif;
                         white-space: nowrap;
                     ">
+
                     Bangladesh University of Professionals
+
                 </h2>
 
                 <!-- LOGO -->
-                <img src="logo.png"
+                <img
+                    src="logo.png"
                     style="
                         width: 110px;
                         margin: 25px auto;
@@ -167,23 +289,23 @@
                     ">
 
                 <!-- FACULTY -->
-                <p id="pFaculty"
+                <p
+                    id="pFaculty"
                     style="
                         font-weight: bold;
                         font-size: 16pt;
                         margin: 5px 0;
-                        font-family: 'Times New Roman', Times, serif;
                         text-align: center;
                     ">
                 </p>
 
                 <!-- DEPARTMENT -->
-                <p id="pDept"
+                <p
+                    id="pDept"
                     style="
                         font-weight: bold;
                         font-size: 14pt;
                         margin: 0;
-                        font-family: 'Times New Roman', Times, serif;
                         text-align: center;
                     ">
                 </p>
@@ -191,13 +313,15 @@
                 <!-- ASSIGNMENT -->
                 <h1
                     style="
-                        font-size: 45pt;
+                        font-size: 38pt;
                         color: #5bc0de;
-                        margin: 25px 0 15px 0;
+                        margin: 10px 0 12px 0;
                         font-family: 'Times New Roman', Times, serif;
                         text-align: center;
                     ">
+
                     Assignment
+
                 </h1>
 
                 <!-- COURSE INFO -->
@@ -206,40 +330,54 @@
                         font-size: 18pt;
                         margin: 15px auto;
                         width: 90%;
-                        font-family: 'Times New Roman', Times, serif;
                         text-align: center;
                     ">
 
                     <p style="margin: 10px 0;">
+
                         <strong>Course Title:</strong>
+
                         <span id="pTitle"></span>
+
                     </p>
 
                     <p style="margin: 10px 0;">
+
                         <strong>Course Code:</strong>
+
                         <span id="pCode"></span>
+
                     </p>
 
-                    <p id="pTopicRow"
+                    <p
+                        id="pTopicRow"
                         style="
                             margin: 10px 0;
                             display: none;
                         ">
+
                         <strong>Topic:</strong>
+
                         <span id="pTopic"></span>
+
                     </p>
+
                 </div>
+
             </div>
 
             <!-- SUBMITTED SECTION -->
-            <div style="width: 95%; margin: 60px auto 0 auto;">
+            <div
+                style="
+                    width: 95%;
+                    margin: 60px auto 0 auto;
+                ">
 
                 <table
                     style="
                         width: 100%;
                         border-collapse: collapse;
                         border: none;
-                        font-family: 'Times New Roman', Times, serif;
                     ">
 
                     <tr>
@@ -258,30 +396,44 @@
                                     margin-bottom: 12px;
                                     border-bottom: 2px solid black;
                                     display: inline-block;
-                                    font-family: 'Times New Roman', Times, serif;
                                 ">
+
                                 Submitted By
+
                             </h3>
 
                             <p style="font-size: 13pt; margin: 6px 0;">
+
                                 <strong>Name:</strong>
+
                                 <span id="pName"></span>
+
                             </p>
 
                             <p style="font-size: 13pt; margin: 6px 0;">
+
                                 <strong>Student ID:</strong>
+
                                 <span id="pId"></span>
+
                             </p>
 
                             <p style="font-size: 13pt; margin: 6px 0;">
+
                                 <strong>Semester:</strong>
+
                                 <span id="pSemester"></span>
+
                             </p>
 
                             <p style="font-size: 13pt; margin: 6px 0;">
+
                                 <strong>Section:</strong>
+
                                 <span id="pSection"></span>
+
                             </p>
+
                         </td>
 
                         <!-- GAP -->
@@ -302,33 +454,32 @@
                                     margin-bottom: 12px;
                                     border-bottom: 2px solid black;
                                     display: inline-block;
-                                    font-family: 'Times New Roman', Times, serif;
                                 ">
+
                                 Submitted To
+
                             </h3>
 
-                            <p style="font-size: 13pt; margin: 6px 0;">
-                                <strong>Name:</strong>
-                                <span id="pTName"></span>
-                            </p>
+                            <p
+                                style="
+                                    font-size: 13pt;
+                                    margin: 6px 0;
+                                    line-height: 1.6;
+                                ">
 
-                            <p style="font-size: 13pt; margin: 6px 0;">
-                                <strong>Designation:</strong>
-                                <span id="pTDesig"></span>
-                            </p>
-
-                            <p style="font-size: 13pt; margin: 6px 0;">
-                                <strong>Department:</strong>
-                                <span id="pTDept"></span>
-                            </p>
-
-                            <p style="font-size: 13pt; margin: 6px 0;">
+                                <span id="pTName"></span>,
+                                <span id="pTDesig"></span>,
+                                <span id="pTDept"></span>,
                                 BUP
+
                             </p>
+
                         </td>
 
                     </tr>
+
                 </table>
+
             </div>
 
             <!-- DATE -->
@@ -338,19 +489,24 @@
                     padding-bottom: 50px;
                     text-align: center;
                     width: 100%;
-                    font-family: 'Times New Roman', Times, serif;
                 ">
 
                 <p style="font-size: 16pt;">
+
                     <strong>Submission Date:</strong>
+
                     <span id="pDate"></span>
+
                 </p>
+
             </div>
 
         </div>
+
     </div>
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
