@@ -54,37 +54,16 @@ function updateDepartments() {
 
 async function generatePDF() {
 
- const faculty = document.getElementById('faculty').value;
-const dept = document.getElementById('dept').value;
-const courseTitle = document.getElementById('courseTitle').value;
-const courseCode = document.getElementById('courseCode').value;
-const studentName = document.getElementById('studentName').value;
-const studentId = document.getElementById('studentId').value;
-const section = document.getElementById('section').value;
-const semester = document.getElementById('semester').value;
-const subDate = document.getElementById('subDate').value;
-const teacherName = document.getElementById('teacherName').value;
-const teacherDesignation = document.getElementById('teacherDesignation').value;
-const teacherDept = document.getElementById('teacherDept').value;
+const form = document.getElementById('coverForm');
 
-if (
-    !faculty ||
-    !dept ||
-    !courseTitle ||
-    !courseCode ||
-    !studentName ||
-    !studentId ||
-    !section ||
-    !semester ||
-    !teacherName ||
-    !teacherDesignation ||
-    !teacherDept
-) {
-    alert("Please fill up all required fields!");
+if (!form.checkValidity()) {
+
+    form.reportValidity();
+
     return;
 }
 
-const nameInput = studentName;
+const nameInput = document.getElementById('studentName').value;
 
     const btn = document.querySelector('.btn-generate');
 
