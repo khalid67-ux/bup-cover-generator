@@ -11,7 +11,7 @@ const depts = {
   "Business Administration (General)",
   "Accounting & Information Systems",
   "Finance & Banking",
-  "Management",
+  "Management Studies",
   "Marketing"
 ],
 
