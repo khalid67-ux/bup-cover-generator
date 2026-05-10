@@ -17,7 +17,13 @@ const depts = {
         "Economics",
         "English",
         "Law"
-    ]
+    ],
+    "Faculty of Security and Strategic Studies": [
+  "International Relations",
+  "Law",
+  "Peace, Conflict and Human Rights Studies",
+  "Mass Communication & Journalism"
+]
 };
 
 function updateDepartments() {
