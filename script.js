@@ -13,11 +13,14 @@ const depts = {
         "Management"
     ],
 
-    "Faculty of Arts and Social Sciences": [
-        "Economics",
-        "English",
-        "Law"
-    ],
+"Faculty of Arts and Social Sciences": [
+  "Economics",
+  "English",
+  "Public Administration",
+  "Sociology",
+  "Development Studies",
+  "Disaster & Resilience Studies"
+],
     "Faculty of Security and Strategic Studies": [
   "International Relations",
   "Law",
