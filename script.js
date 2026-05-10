@@ -7,11 +7,13 @@ const depts = {
 
     "Faculty of Medical Studies": ["Pharmacy"],
 
-    "Faculty of Business Studies": [
-        "Accounting and Information Systems",
-        "Finance and Banking",
-        "Management"
-    ],
+   "Faculty of Business Studies": [
+  "Business Administration (General)",
+  "Accounting & Information Systems",
+  "Finance & Banking",
+  "Management",
+  "Marketing"
+],
 
 "Faculty of Arts and Social Sciences": [
   "Economics",
