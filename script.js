@@ -21,7 +21,7 @@ const depts = {
   "Public Administration",
   "Sociology",
   "Development Studies",
-  "Disaster & Resilience Studies"
+  "Disaster Management and Resilience"
 ],
     "Faculty of Security and Strategic Studies": [
   "International Relations",
