@@ -5,7 +5,7 @@ const depts = {
         "Environmental Science"
     ],
 
-    "Faculty of Medical Studies": ["Pharmacy"],
+    "Faculty of Medical Studies": ["Pharmacy", "Public Health & Informatics"],
 
    "Faculty of Business Studies": [
   "Business Administration (General)",
