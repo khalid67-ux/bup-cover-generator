@@ -117,8 +117,26 @@ const nameInput = document.getElementById('studentName').value;
     document.getElementById('pId').innerText =
         document.getElementById('studentId').value;
 
+   const sectionValue =
+    document.getElementById('section').value;
+
+const pSectionRow =
+    document.getElementById('pSectionRow');
+
+if(sectionValue !== ""){
+
     document.getElementById('pSection').innerText =
-        document.getElementById('section').value;
+        sectionValue;
+
+    pSectionRow.style.display = 'block';
+
+}
+
+else{
+
+    pSectionRow.style.display = 'none';
+
+}
 
     document.getElementById('pSemester').innerText =
         document.getElementById('semester').value;
