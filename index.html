@@ -273,14 +273,20 @@ gtag('config', 'G-B1P9J4YPZ9');
 
                     </button>
 
-                    <a
-                      href="https://forms.gle/E6WFot1sCXEVfrXs7"
-                      target="_blank"
-                      class="feedback-btn">
+                   <button
+    type="button"
+    class="feedback-btn"
+    onclick="toggleFeedback()">
 
-                      Send Feedback
+    Send Feedback
 
-                    </a>
+</button>
+
+<div id="feedback-section" style="display: none; margin-top: 20px;">
+
+    <div id="disqus_thread"></div>
+
+</div>
 
                 </div>
 
@@ -707,14 +713,29 @@ gtag('config', 'G-B1P9J4YPZ9');
 
     <script src="script.js"></script>
 
-   <div id="disqus_thread"></div>
 <script>
-    (function() {
+function toggleFeedback() {
+
+    const feedback = document.getElementById("feedback-section");
+
+    if (feedback.style.display === "none") {
+        feedback.style.display = "block";
+    } else {
+        feedback.style.display = "none";
+    }
+}
+</script>
+
+<script>
+(function() {
     var d = document, s = d.createElement('script');
+
     s.src = 'https://bup-academic-cover-generator.disqus.com/embed.js';
+
     s.setAttribute('data-timestamp', +new Date());
+
     (d.head || d.body).appendChild(s);
-    })();
+})();
 </script>
 
 </body>
