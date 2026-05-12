@@ -86,6 +86,9 @@ const nameInput = document.getElementById('studentName').value;
     document.getElementById('pCode').innerText =
         document.getElementById('courseCode').value;
 
+    document.getElementById('pCoverType').innerText =
+    document.getElementById('coverType').value;
+
     // =========================
     // TOPIC SECTION
     // =========================
