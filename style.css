@@ -242,12 +242,6 @@ select:focus {
 }
 
 
-body{
-    margin:0;
-    padding:0;
-    background:#edf7ef;
-}
-
 /* NAVBAR */
 .navbar{
     position: sticky;
@@ -343,4 +337,7 @@ body{
         width:36px;
         height:36px;
     }
+    body{
+    padding:20px 16px;
+}
 }
