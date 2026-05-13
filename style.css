@@ -200,3 +200,42 @@ select:focus {
     line-height: 1.7;
 }
 
+
+.feedback-section{
+  max-width:700px;
+  margin:auto;
+  padding:20px;
+}
+
+.feedback-section input,
+.feedback-section textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+}
+
+.feedback-section button{
+  padding:10px 20px;
+  border:none;
+  border-radius:10px;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+}
+
+.feedback-card{
+  background:#f8fafc;
+  padding:15px;
+  border-radius:12px;
+  margin-top:15px;
+}
+
+.admin-reply{
+  margin-top:10px;
+  padding:10px;
+  background:#e0f2fe;
+  border-left:4px solid #0284c7;
+  border-radius:8px;
+}
