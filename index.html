@@ -273,7 +273,7 @@ gtag('config', 'G-B1P9J4YPZ9');
 
                     </button>
 
-                   <button
+               <button
     type="button"
     class="feedback-btn"
     onclick="toggleFeedback()">
@@ -282,15 +282,29 @@ gtag('config', 'G-B1P9J4YPZ9');
 
 </button>
 
-<div id="feedback-section" style="display: none; margin-top: 20px;">
+<div id="feedback-section"
+     style="display:none; margin-top:20px;">
 
-    <div id="disqus_thread"></div>
+    <section class="feedback-section">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Your Name">
+
+        <textarea
+            id="message"
+            placeholder="Write your feedback"></textarea>
+
+        <button onclick="submitFeedback()">
+            Submit Feedback
+        </button>
+
+        <div id="feedbackList"></div>
+
+    </section>
 
 </div>
-
-                </div>
-
-            </form>
 
             <!-- FOOTER -->
 
@@ -704,29 +718,109 @@ gtag('config', 'G-B1P9J4YPZ9');
 
     <script src="script.js"></script>
 
-<script>
-function toggleFeedback() {
+<script type="module">
 
-    const feedback = document.getElementById("feedback-section");
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-    if (feedback.style.display === "none") {
-        feedback.style.display = "block";
-    } else {
-        feedback.style.display = "none";
-    }
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  onSnapshot
 }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDtRJyTXykmMq6Q5_P1IUYUhUsIP95tYO4",
+  authDomain: "bup-cover-feedback.firebaseapp.com",
+  projectId: "bup-cover-feedback",
+  storageBucket: "bup-cover-feedback.firebasestorage.app",
+  messagingSenderId: "344205749988",
+  appId: "1:344205749988:web:a0bc753a94e2f95c7946f1",
+  measurementId: "G-S6VZKH2XR5"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+window.submitFeedback = async function () {
+
+  const name = document.getElementById("name").value;
+  const message = document.getElementById("message").value;
+
+  if (!name || !message) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  await addDoc(collection(db, "feedbacks"), {
+    name,
+    message,
+    reply: "",
+    createdAt: Date.now()
+  });
+
+  document.getElementById("name").value = "";
+  document.getElementById("message").value = "";
+};
+
+
+const q = query(
+  collection(db, "feedbacks"),
+  orderBy("createdAt", "desc")
+);
+
+
+onSnapshot(q, (snapshot) => {
+
+  const feedbackList = document.getElementById("feedbackList");
+
+  feedbackList.innerHTML = "";
+
+  snapshot.forEach((doc) => {
+
+    const data = doc.data();
+
+    feedbackList.innerHTML += `
+      <div class="feedback-card">
+        <strong>${data.name}</strong>
+        <p>${data.message}</p>
+
+        ${data.reply ? `
+          <div class="admin-reply">
+            <strong>Admin Reply:</strong>
+            <p>${data.reply}</p>
+          </div>
+        ` : ""}
+      </div>
+    `;
+  });
+});
+
 </script>
 
 <script>
-(function() {
-    var d = document, s = d.createElement('script');
+function toggleFeedback() {
 
-    s.src = 'https://bup-academic-cover-generator.disqus.com/embed.js';
+    const section =
+        document.getElementById("feedback-section");
 
-    s.setAttribute('data-timestamp', +new Date());
+    if (section.style.display === "none") {
 
-    (d.head || d.body).appendChild(s);
-})();
+        section.style.display = "block";
+
+    } else {
+
+        section.style.display = "none";
+
+    }
+}
 </script>
 
 </body>
