@@ -148,45 +148,7 @@ select:focus {
    MOBILE RESPONSIVE
 ========================= */
 
-@media (max-width: 550px) {
 
-    body {
-        padding: 20px 12px;
-    }
-
-    .card {
-        padding: 20px;
-        border-radius: 14px;
-    }
-
-    .form-row.split {
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .form-header h1 {
-        font-size: 26px;
-    }
-
-    .form-header p {
-        font-size: 14px;
-    }
-
-    .btn-generate {
-        font-size: 16px;
-        padding: 14px;
-    }
-
-    input,
-    select {
-        font-size: 14px;
-        padding: 11px;
-    }
-
-    .submitted-to-box {
-        padding: 16px;
-    }
-}
 
 .info-section {
     max-width: 900px;
@@ -357,6 +319,39 @@ select:focus {
     }
 
     .page-wrapper{
-        padding:0 6px;
+        padding:0 12px;
+    }
+
+    .card{
+        padding:20px;
+        border-radius:14px;
+    }
+
+    .form-row.split{
+        flex-direction:column;
+        gap:0;
+    }
+
+    .form-header h1{
+        font-size:26px;
+    }
+
+    .form-header p{
+        font-size:14px;
+    }
+
+    .btn-generate{
+        font-size:16px;
+        padding:14px;
+    }
+
+    input,
+    select{
+        font-size:14px;
+        padding:11px;
+    }
+
+    .submitted-to-box{
+        padding:16px;
     }
 }
