@@ -2,7 +2,7 @@ body {
     background: #f0fdf4;
     font-family: 'Inter', sans-serif;
     margin: 0;
-    padding: 40px 20px;
+    padding: 0;
 }
 
 .page-wrapper {
@@ -10,6 +10,7 @@ body {
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
+     padding: 0 20px;
 }
 
 .form-container {
@@ -337,7 +338,7 @@ select:focus {
         width:36px;
         height:36px;
     }
-    body{
-    padding:20px 16px;
+  .page-wrapper{
+    padding:0 16px;
 }
 }
