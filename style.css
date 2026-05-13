@@ -321,7 +321,7 @@ body{
 }
 
 /* MOBILE */
-@media (max-width:768px){
+@media (max-width:550px){
 
     .nav-container{
         padding:12px 16px;
