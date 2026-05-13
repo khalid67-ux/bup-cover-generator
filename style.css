@@ -252,9 +252,14 @@ select:focus {
 .navbar{
     position: sticky;
     top: 0;
-    z-index: 1000;
+    left: 0;
 
     width: 100%;
+    margin: 0;
+    padding: 0;
+
+    z-index: 1000;
+
     background: rgba(255,255,255,0.7);
 
     backdrop-filter: blur(10px);
@@ -323,12 +328,6 @@ select:focus {
 /* MOBILE */
 
 @media (max-width:768px){
-
-    .navbar{
-        width:100%;
-        margin:0;
-        border-radius:0;
-    }
 
     .nav-container{
         padding:10px 12px;
