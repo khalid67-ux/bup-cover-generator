@@ -12,21 +12,30 @@
 
 <style>
 
-body
-  
-  {
+body{
     background:#edf7ef;
 }
 
-.feedback-page{
+/* MAIN WRAPPER */
+
+.feedback-wrapper{
 
     max-width:900px;
     margin:60px auto;
+}
+
+/* CARD */
+
+.feedback-page{
+
     background:#fff;
     padding:40px;
     border-radius:28px;
-  box-sizing:border-box;
+    box-sizing:border-box;
+    margin-bottom:30px;
 }
+
+/* TITLE */
 
 .feedback-page h1{
 
@@ -35,6 +44,8 @@ body
     font-size:58px;
     margin-bottom:40px;
 }
+
+/* INPUT */
 
 .feedback-section input,
 .feedback-section textarea{
@@ -48,10 +59,14 @@ body
     box-sizing:border-box;
 }
 
+/* TEXTAREA */
+
 .feedback-section textarea{
 
     min-height:120px;
 }
+
+/* BUTTON */
 
 .feedback-section button{
 
@@ -62,7 +77,12 @@ body
     border-radius:16px;
     font-size:20px;
     cursor:pointer;
+
+    display:block;
+    margin:0 auto;
 }
+
+/* COMMENT CARD */
 
 .feedback-card{
 
@@ -71,6 +91,8 @@ body
     border-radius:20px;
     margin-top:25px;
 }
+
+/* ADMIN REPLY */
 
 .admin-reply{
 
@@ -81,67 +103,73 @@ body
     margin-top:20px;
 }
 
-  
+/* MOBILE */
+
 @media (max-width: 768px){
 
-    .feedback-page{
+    .feedback-wrapper{
 
         width: calc(100% - 24px);
         margin: 25px 12px;
-        padding: 22px;
-        border-radius: 22px;
+    }
+
+    .feedback-page{
+
+        padding:22px;
+        border-radius:22px;
     }
 
     .feedback-page h1{
 
-        font-size: 38px;
-        margin-bottom: 28px;
+        font-size:38px;
+        margin-bottom:28px;
     }
 
     .feedback-section input,
     .feedback-section textarea{
 
-        font-size: 16px;
-        padding: 14px;
-        border-radius: 14px;
+        font-size:16px;
+        padding:14px;
+        border-radius:14px;
     }
 
     .feedback-section textarea{
 
-        min-height: 110px;
+        min-height:110px;
     }
 
     .feedback-section button{
 
-        width: 100%;
-        padding: 15px;
-        font-size: 18px;
-        border-radius: 14px;
+        width:100%;
+        padding:15px;
+        font-size:18px;
+        border-radius:14px;
     }
 
     .feedback-card{
 
-        padding: 18px;
-        border-radius: 16px;
+        padding:18px;
+        border-radius:16px;
     }
 
     .feedback-card strong{
 
-        font-size: 22px;
+        font-size:22px;
     }
 
     .feedback-card p{
 
-        font-size: 16px;
-        line-height: 1.6;
-        word-break: break-word;
+        font-size:16px;
+        line-height:1.6;
+        word-break:break-word;
     }
 
     .admin-reply{
 
-        padding: 16px;
-        border-radius: 12px;
+        padding:16px;
+        border-radius:12px;
     }
+}
 
 </style>
 
@@ -149,7 +177,7 @@ body
 
 <body>
 
-  <nav class="navbar">
+<nav class="navbar">
 
     <div class="nav-container">
 
@@ -164,21 +192,33 @@ body
         <ul class="nav-links">
 
             <li>
+
                 <a href="index.html">
+
                     Home
+
                 </a>
+
             </li>
 
             <li>
+
                 <a href="feedback.html">
+
                     Feedback
+
                 </a>
+
             </li>
 
             <li>
+
                 <a href="about.html">
+
                     About
+
                 </a>
+
             </li>
 
         </ul>
@@ -187,30 +227,54 @@ body
 
 </nav>
 
-<div class="feedback-page">
+<!-- MAIN WRAPPER -->
 
-<h1>Public Feedback</h1>
+<div class="feedback-wrapper">
 
-<section class="feedback-section">
+    <!-- SUBMIT CARD -->
 
-<input
-    type="text"
-    id="name"
-    placeholder="Your Name">
+    <div class="feedback-page">
 
-<textarea
-    id="message"
-    placeholder="Write your feedback"></textarea>
+        <h1>Share Your Feedback</h1>
 
-<button onclick="submitFeedback()">
+        <section class="feedback-section">
 
-    Submit Feedback
+            <input
+                type="text"
+                id="name"
+                placeholder="Your Name">
 
-</button>
+            <textarea
+                id="message"
+                placeholder="Write your feedback"></textarea>
 
-<div id="feedbackList"></div>
+            <button onclick="submitFeedback()">
 
-</section>
+                Submit Feedback
+
+            </button>
+
+        </section>
+
+    </div>
+
+    <!-- COMMENTS CARD -->
+
+    <div class="feedback-page">
+
+        <h1
+            style="
+                font-size:48px;
+                margin-bottom:25px;
+            ">
+
+            Community Reviews
+
+        </h1>
+
+        <div id="feedbackList"></div>
+
+    </div>
 
 </div>
 
@@ -384,7 +448,9 @@ onSnapshot(q, (snapshot) => {
 
         <strong>${data.name}</strong>
 
-        <p>${data.message}</p>
+        <p style="margin-top:15px;">
+            ${data.message}
+        </p>
 
         ${data.reply ? `
 
@@ -392,7 +458,9 @@ onSnapshot(q, (snapshot) => {
 
             <strong>Admin Reply:</strong>
 
-            <p>${data.reply}</p>
+            <p style="margin-top:12px;">
+                ${data.reply}
+            </p>
 
           </div>
 
