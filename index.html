@@ -14,8 +14,7 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
+    
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-B1P9J4YPZ9"></script>
 
@@ -58,247 +57,39 @@ gtag('config', 'G-B1P9J4YPZ9');
 
     <div class="page-wrapper">
 
-        <div class="form-container">
+       
 
-            <header class="form-header">
+<div class="home-container">
 
-              <div class="icon-circle">
+    <div class="icon-circle">
+        <img src="logo.png"
+             alt="BUP Logo"
+             style="width:42px;height:42px;object-fit:contain;">
+    </div>
 
-    <img
-        src="logo.png"
-        alt="BUP Logo"
-        style="
-            width: 42px;
-            height: 42px;
-            object-fit: contain;
-        ">
+    <h1>BUP Academic Cover Generator</h1>
 
-</div>
+    <p>
+        Generate Assignment and Lab Report Cover Pages Easily
+    </p>
 
-                <h1>BUP Academic Cover Generator</h1>
+    <div class="home-buttons">
 
-                <p>
-                    Fill in the details to generate your academic cover page.
-                </p>
+        <a href="https://bupassignment.khalid67.me" class="home-btn">
+            Assignment
+        </a>
 
-            </header>
+        <a href="https://buplabcover.vercel.app" class="home-btn">
+            Lab Report
+        </a>
 
-            <form id="coverForm">
-
-                <div class="card">
-
-                    <!-- FACULTY + DEPARTMENT -->
-                    <div class="form-row split">
-
-                        <div class="form-group">
-
-                            <label>Faculty *</label>
-
-                            <select id="faculty" onchange="updateDepartments()" required>
-
-                              <option value="">Select Faculty</option>
-                                <option value="Faculty of Science and Technology">Faculty of Science and Technology</option>
-                                <option value="Faculty of Medical Studies">Faculty of Medical Studies</option>
-                                <option value="Faculty of Business Studies">Faculty of Business Studies</option>
-                                <option value="Faculty of Arts and Social Sciences">Faculty of Arts and Social Sciences</option>
-                                <option value="Faculty of Security and Strategic Studies">Faculty of Security and Strategic Studies</option>
-
-                            </select>
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <label>Department *</label>
-
-                            <select id="dept" required>
-
-                                <option value="">Select Department</option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-                    <!-- COVER TYPE -->
-<div class="form-group">
-
-    <label>Cover Type *</label>
-
-    <select id="coverType" required>
-
-        <option value="">Select Type</option>
-
-        <option value="Assignment">Assignment</option>
-
-        <option value="Assignment 1">Assignment 1</option>
-
-        <option value="Assignment 2">Assignment 2</option>
-
-        <option value="Assignment 3">Assignment 3</option>
-
-        <option value="Term Paper">Term Paper</option>
-
-        <option value="Term Paper 1">Term Paper 1</option>
-
-        <option value="Term Paper 2">Term Paper 2</option>
-
-        <option value="Term Paper 3">Term Paper 3</option>
-
-    </select>
+    </div>
 
 </div>
 
-                    <!-- COURSE -->
-                    <div class="form-row split">
-
-                        <div class="form-group">
-
-                            <label>Course Title *</label>
-
-                            <input type="text" id="courseTitle" required>
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <label>Course Code *</label>
-
-                            <input type="text" id="courseCode" required>
-
-                        </div>
-
-                    </div>
-
-                    <!-- TOPIC -->
-                    <div class="form-group">
-
-                        <label>Assignment Topic (Optional)</label>
-
-                        <input type="text" id="topic">
-
-                    </div>
-
-                    <!-- STUDENT -->
-                    <div class="form-row split">
-
-                        <div class="form-group">
-
-                            <label>Student Name *</label>
-
-                            <input type="text" id="studentName" required>
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <label>Student ID *</label>
-
-                            <input type="text" id="studentId" required>
-
-                        </div>
-
-                    </div>
-
-                    <!-- SECTION + SEMESTER -->
-                    <div class="form-row split">
-
-                        <div class="form-group">
-
-                            <label>Section</label>
-
-                            <select id="section">
-                                <option value="">Select Section</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                 <option value="C">C</option>
-                                 <option value="D">D</option>
 
 
-
-                            </select>
-
-                        </div>
-
-                        <div class="form-group">
-
-                            <label>Semester *</label>
-
-                            <select id="semester"  required>
-                                <option value="">Select Semester</option>
-                                <option value="1st Semester">1st Semester</option>
-                                <option value="2nd Semester">2nd Semester</option>
-                                <option value="3rd Semester">3rd Semester</option>
-                                <option value="4th Semester">4th Semester</option>
-                                <option value="5th Semester">5th Semester</option>
-                                <option value="6th Semester">6th Semester</option>
-                                <option value="7th Semester">7th Semester</option>
-                                <option value="8th Semester">8th Semester</option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-                    <!-- DATE -->
-                    <div class="form-group">
-
-                        <label>Submission Date</label>
-
-                       <input
-                           type="text"
-                           id="subDate"
-                           placeholder="dd/mm/yyyy"
-                           onfocus="(this.type='date')">
-
-                    </div>
-
-                    <!-- SUBMITTED TO -->
-                    <div class="submitted-to-box">
-
-                        <h4>Submitted To</h4>
-
-                        <div class="form-row split">
-
-                            <div class="form-group">
-
-                                <label>Teacher Name *</label>
-
-                                <input type="text" id="teacherName" required>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <label>Designation *</label>
-
-                                <input type="text" id="teacherDesignation" required>
-
-                            </div>
-
-                        </div>
-
-                        <label>Department *</label>
-
-                        <input type="text" id="teacherDept" required>
-
-                    </div>
-
-                    <!-- BUTTON -->
-                    <button
-                        type="button"
-                        class="btn-generate"
-                        onclick="generatePDF()">
-
-                        Download Cover Page
-
-                    </button>
-
-
-</form>
-</div>
+                 
 
 
             <!-- FOOTER -->
@@ -710,9 +501,6 @@ gtag('config', 'G-B1P9J4YPZ9');
         </div>
 
     </div>
-
-    <script src="script.js"></script>
-
 
 </body>
 
