@@ -62,7 +62,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 15px;
+    margin: 0 auto 10px;
     font-size: 28px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
@@ -468,7 +468,7 @@ footer{
 @media (max-width:768px){
 
    .home-container{
-     min-height:calc(100vh - 230px);
+ min-height:calc(100vh - 300px);
     display:flex;
     flex-direction:column;
     justify-content:center;
