@@ -468,7 +468,7 @@ footer{
 @media (max-width:768px){
 
    .home-container{
- min-height:calc(100vh - 300px);
+ min-height:calc(100vh - 350px);
     display:flex;
     flex-direction:column;
     justify-content:center;
